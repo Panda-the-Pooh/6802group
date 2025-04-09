@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    <title>Main</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to Main Menu</h2>
+        <form action="/foodexp" method="POST">
+            <input type="submit" value="Prediction - Food Expenditure">
+        </form>
+        <form action="/foodexp1" method="POST">
+            <input type="submit" value="Prediction Food Exp JS1">
+        </form>
+        <form action="/foodexp2" method="POST">
+            <input type="submit" value="Prediction Food Exp JS2">
+        </form>
+
+        <form action="/ethical_test" method="POST">
+            <input type="submit" value="Ethical Test for Employee">
+        </form>
+
+        <form action="/FAQ" method="POST">
+            <input type="submit" value="FAQ">
+        </form>
+
+        <form action="/userLog" method="POST">
+            <input type="submit" value="View User Log">
+        </form>
+
+        <form action="/deleteLog" method="POST">
+            <input type="submit" value="Delete User Log">
+        </form>
+    </div>
+</body>
+</html>

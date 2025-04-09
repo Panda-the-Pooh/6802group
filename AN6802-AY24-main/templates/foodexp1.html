@@ -1,0 +1,31 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+</head>
+
+<body>
+    <div class="container">
+        <h2>
+            Predict Food Expenditure
+        </h2>
+
+        <!-- id="salary": 唯一标识这个输入框，以便在 JavaScript 里访问它。
+        placeholder="Enter Salary"：输入框的占位文本，提示用户输入工资。 -->
+        <input type="number" id="salary" placeholder="Enter Salary">
+
+        <!-- onclick="predict_foodexp()"：点击按钮后调用JavaScript函数predict_foodexp()计算 -->
+        <button class="btn" onclick="predict_foodexp()">Enter</button>
+        <p id="foodexp"></p>
+        <form action="/main" method="POST">
+            <input type="submit" value="Main">
+        </form>
+        <script>
+            function predict_foodexp() {
+                const salary=document.getElementById("salary").value // const: 将工资值存入变量salary
+                // document.getElementById("salary")：找到输入框, .value：获取用户输入的工资值
+                console.log(salary) // 在检查页面的终端里能够看到已输入的salary
+                document.getElementById("foodexp").innerText = "Predicted Food Expenditure: " + ((salary * 0.4851)+147.4)
+            }
+        </script>
+    </div>
+</body>
