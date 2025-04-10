@@ -17,7 +17,7 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 genai.configure(api_key=api)
 
 # Telegram Bot setup
-TOKEN = '7838598926:AAEPGXI3eZGz4UKGtUfaB4cvgi23gdr9Mrc'
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 BASE_URL = f'https://api.telegram.org/bot{TOKEN}/'
 
 ## index
