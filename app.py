@@ -63,18 +63,10 @@ def foodexp_pred():
     return(render_template("foodexp_pred.html", r=(q*0.4851)+147.4))
 
 
-## ethical test
-@app.route("/ethical_test", methods=["GET", "POST"])
-def ethical_test():
-    return(render_template("ethical_test.html"))
-
-@app.route("/test_result", methods=["GET", "POST"])
-def test_result():
-    answer = request.form.get("answer")
-    if answer == "false":
-        return(render_template("pass.html"))
-    elif answer == "true":
-        return(render_template("fail.html"))
+## investor test
+@app.route("/investor_test", methods=["GET", "POST"])
+def investor_test():
+    return render_template("investor_test.html")
 
 
 ## FAQ
