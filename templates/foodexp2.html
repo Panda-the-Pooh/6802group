@@ -1,19 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    <title>Predict Food Expenditure</title>
 </head>
-
 <body>
     <div class="container">
-        <h2>
-            Predict Food Expenditure
-        </h2>
-        <input type="number" id="salary" placeholder="Enter Salary">
-        <button class="btn" onclick="predict_foodexp()">Enter</button>
-        <p id="foodexp"></p>
+        <h2>Predict Food Expenditure</h2>
+
+        <!-- 输入框和按钮 -->
+        <div style="margin-bottom: 20px;">
+            <input type="number" id="salary" placeholder="Enter Salary">
+            <button class="btn" onclick="predict_foodexp()">Enter</button>
+        </div>
+
+        <!-- 显示预测结果 -->
+        <div style="margin-bottom: 20px;">
+            <p id="foodexp"></p>
+        </div>
+
+        <!-- 返回按钮 -->
         <form action="/main" method="POST">
             <input type="submit" value="Main">
         </form>
-        <script src="{{url_for('static', filename='foodexp.js')}}"></script>
     </div>
+
+    <!-- 引入外部的 JavaScript 文件 -->
+    <script src="{{url_for('static', filename='foodexp.js')}}"></script>
 </body>
+</html>

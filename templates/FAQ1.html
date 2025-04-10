@@ -1,15 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    <title>FAQ Reply</title>
 </head>
-
 <body>
     <div class="container">
-        <form action="/main" method="POST">
-            <input type="submit" value="Main">
-        </form>
-        <h6>
-            Reply : {{r}}
-        </h6>
+        <div class="button-group">
+            <form action="/main" method="POST">
+                <input type="submit" value="Main">
+            </form>
+        </div>
+
+        <div class="response-text">
+            <h3>Reply:</h3>
+            <p>{{ r }}</p>
+        </div>
     </div>
 </body>
+</html>

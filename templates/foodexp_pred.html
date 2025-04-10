@@ -1,15 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    <title>Food Expense Prediction</title>
 </head>
-
 <body>
     <div class="container">
-        <h2>
-            Predicted Food Expense  {{r}}
-        </h2>
+        <h2>Predicted Food Expense</h2>
+        <p class="result-text">${{ r }}</p>
         <form action="/main" method="POST">
-            <input type="submit" value="Main">
+            <input type="submit" value="Back to Main">
         </form>
     </div>
 </body>
+</html>

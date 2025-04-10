@@ -9,31 +9,39 @@
 <body>
     <div class="container">
         <h2>Welcome to Main Menu</h2>
-        <form action="/foodexp" method="POST">
-            <input type="submit" value="Prediction - Food Expenditure">
-        </form>
-        <form action="/foodexp1" method="POST">
-            <input type="submit" value="Prediction Food Exp JS1">
-        </form>
-        <form action="/foodexp2" method="POST">
-            <input type="submit" value="Prediction Food Exp JS2">
-        </form>
+        
+        <!-- Prediction Form Buttons -->
+        <div class="button-group">
+            <form action="/foodexp" method="POST">
+                <input type="submit" value="Prediction - Food Expenditure">
+            </form>
+            <form action="/foodexp1" method="POST">
+                <input type="submit" value="Prediction Food Exp JS1">
+            </form>
+            <form action="/foodexp2" method="POST">
+                <input type="submit" value="Prediction Food Exp JS2">
+            </form>
+        </div>
 
+        <!-- Investor Test Form -->
         <form action="/investor_test" method="POST">
             <input type="submit" value="Investor Test">
         </form>
 
+        <!-- FAQ Form -->
         <form action="/FAQ" method="POST">
             <input type="submit" value="FAQ">
         </form>
 
-        <form action="/userLog" method="POST">
-            <input type="submit" value="View User Log">
-        </form>
-
-        <form action="/deleteLog" method="POST">
-            <input type="submit" value="Delete User Log">
-        </form>
+        <!-- User Log Forms -->
+        <div class="button-group">
+            <form action="/userLog" method="POST">
+                <input type="submit" value="View User Log">
+            </form>
+            <form action="/deleteLog" method="POST">
+                <input type="submit" value="Delete User Log">
+            </form>
+        </div>
     </div>
 </body>
 </html>
