@@ -9,14 +9,17 @@
 <body>
     <div class="container">
         <h1>Telegram Bot Interaction</h1>
+        <a href="https://web.telegram.org/k/#@PugLover_bot" target="_blank">
+            <button>Start Chat with Bot</button>
+        </a>
 
-        <form action="/telegram" method="POST">
-            <button type="submit">Start Telegram</button>
-        </form>
-
-        <div>
-            <p>To interact with the bot, press the button above and follow the instructions in your Telegram app.</p>
+        <div style="margin-top: 20px;">
+            <p>💬 After clicking the button, please type <code>hi</code> in the Telegram chat to begin.</p>
+            <p>🧠 The bot uses the DeepSeek model to respond to your messages.</p>
         </div>
+        <form action="/main" method="POST">
+            <input type="submit" value="Back to Main">
+        </form>
     </div>
 </body>
 </html>
