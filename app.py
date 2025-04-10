@@ -2,28 +2,29 @@ from flask import Flask, request, render_template
 import sqlite3
 import datetime
 import google.generativeai as genai
-import os
+import os # remove the api, then go to the render
 import wikipedia
 import time
 import requests
 
 # Flask no need to beautify, Flask-markup is used to beautify
+
 app = Flask(__name__)
 
-# Set up API key for generative AI
 flag = 1
 api = os.getenv("makersuite")
 model = genai.GenerativeModel("gemini-1.5-flash")
 genai.configure(api_key=api)
 
-# Telegram Bot setup 有问题：用哪个token？
-TOKEN = '7669423066:AAF1DXuNqn5WYId4kwFuYmBVePUzwKqHVEI'
+# Telegram Bot setup
+TOKEN = '7838598926:AAEPGXI3eZGz4UKGtUfaB4cvgi23gdr9Mrc'
 BASE_URL = f'https://api.telegram.org/bot{TOKEN}/'
 
 ## index
 @app.route("/", methods=['GET', 'POST'])
 def index():
-    return render_template("index.html")
+    return(render_template("index.html"))
+
 
 ## main menu
 @app.route("/main", methods=['GET', 'POST'])
@@ -31,24 +32,67 @@ def main():
     global flag
     # debug: every time submit the button will create a user called 'None'
     if flag == 1:
-        t = datetime.datetime.now()  # get timestamp
-        user_name = request.form.get("q")  # get user_name
+        t = datetime.datetime.now() # get timestamp
+        user_name = request.form.get("q") # get user_name
 
-        conn = sqlite3.connect('user.db')  # connect the db
+        conn = sqlite3.connect('user.db') # connect the db
         c = conn.cursor()
         c.execute('insert into user (name, timestamp) values (?, ?)', (user_name, t))
-        conn.commit()  # commit transaction
+        conn.commit() # insert是数据操作语言DML，会修改数据库，必须commit调用
         c.close()
         conn.close()
 
         flag = 0
 
-    return render_template("main.html")
+    return(render_template("main.html"))
 
-# Telegram interaction
+
+## food expenditure prediction
+@app.route("/foodexp", methods=["GET", "POST"])
+def foodexp():
+    return(render_template("foodexp.html"))
+
+# food exp style 1
+@app.route("/foodexp1", methods=["GET", "POST"])
+def foodexp1():
+    return(render_template("foodexp1.html"))
+
+# food exp style 2
+@app.route("/foodexp2", methods=["GET", "POST"])
+def foodexp2():
+    return(render_template("foodexp2.html"))
+
+@app.route("/foodexp_pred", methods=["GET", "POST"])
+def foodexp_pred():
+    q = float(request.form.get("q")) # input should be float
+    return(render_template("foodexp_pred.html", r=(q*0.4851)+147.4))
+
+
+## investor test
+@app.route("/investor_test", methods=["GET", "POST"])
+def investor_test():
+    return render_template("investor_test.html")
+
+
+## FAQ
+@app.route("/FAQ", methods=["GET", "POST"])
+def FAQ():
+    return(render_template("FAQ.html"))
+
+@app.route("/FAQ1", methods=["GET", "POST"])
+def FAQ1():
+    r = model.generate_content("Factors for Profit")
+    return(render_template("FAQ1.html", r=r.candidates[0].content.parts[0]))
+
+@app.route("/FAQinput", methods=['GET', 'POST'])
+def FAQinput():
+    q = request.form.get("q")
+    r = wikipedia.summary(q)
+    return(render_template("FAQinput.html", r=r))
+
 @app.route('/telegram', methods=['GET','POST'])
 def telegram():
-    # Grab id and message from Telegram bot
+    #grab id
     time.sleep(5)
     response = requests.get(BASE_URL + 'getUpdates')
     data = response.json()
@@ -56,19 +100,12 @@ def telegram():
     chat_id = data['result'][-1]['message']['chat']['id']
     print("Text:", text)
     print("Chat ID:", chat_id)
-
-    # Send welcome message
     send_url = BASE_URL + f'sendMessage?chat_id={chat_id}&text={"Welcome to prediction, please enter the salary"}'
     requests.get(send_url)
-    
     time.sleep(3)
-    
-    # Get the next message from user
     response = requests.get(BASE_URL + 'getUpdates')
     data = response.json()
     text = data['result'][-1]['message']['text']
-
-    # Check if the input is numeric
     if text.isnumeric():
         msg = str(float(text) * 100 + 10)
         send_url = BASE_URL + f'sendMessage?chat_id={chat_id}&text={msg}'
@@ -81,47 +118,38 @@ def telegram():
         requests.get(send_url)
         time.sleep(3)
 
-    return render_template("index.html")
-
-# FAQ and other routes remain the same
-@app.route("/FAQ", methods=["GET", "POST"])
-def FAQ():
-    return render_template("FAQ.html")
-
-@app.route("/FAQ1", methods=["GET", "POST"])
-def FAQ1():
-    r = model.generate_content("Factors for Profit")
-    return render_template("FAQ1.html", r=r.candidates[0].content.parts[0])
-
-@app.route("/FAQinput", methods=['GET', 'POST'])
-def FAQinput():
-    q = request.form.get("q")
-    r = wikipedia.summary(q)
-    return render_template("FAQinput.html", r=r)
+    return render_template("telegram.html")
 
 ## view user log
 @app.route("/userLog", methods=["GET", "POST"])
 def userLog():
+
     conn = sqlite3.connect('user.db')
     c = conn.cursor()
     c.execute('select * from user')
     r = ""
     for row in c:
         r += str(row) + "\n"
+    print(r)
     c.close()
     conn.close()
-    return render_template("userLog.html", r=r)
+
+    return(render_template("userLog.html", r=r))
+
 
 ## delete user log
 @app.route("/deleteLog", methods=["GET", "POST"])
 def deleteLog():
+
     conn = sqlite3.connect('user.db')
     c = conn.cursor()
     c.execute('delete from user')
     conn.commit()
     c.close()
     conn.close()
-    return render_template("deleteLog.html")
+
+    return(render_template("deleteLog.html"))
+
 
 if __name__ == "__main__":
     app.run()

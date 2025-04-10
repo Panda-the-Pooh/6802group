@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Bot Interaction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Telegram Bot Interaction</h1>
+
+        <form action="/telegram" method="POST">
+            <button type="submit">Start Telegram</button>
+        </form>
+
+        <div>
+            <p>To interact with the bot, press the button above and follow the instructions in your Telegram app.</p>
+        </div>
+    </div>
+</body>
+</html>
