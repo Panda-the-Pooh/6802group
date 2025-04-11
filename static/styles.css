@@ -14,36 +14,11 @@ body {
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px;  /* 调整容器最大宽度，保证按钮不会溢出 */
+    max-width: 500px;
     width: 100%;
     text-align: center;
-    box-sizing: border-box; /* 确保宽度计算包括 padding */
+    box-sizing: border-box;
 }
-
-/* 修改按钮容器 */
-.container button {
-    margin: 10px;  /* 给每个按钮设置统一间隔 */
-}
-
-/* 如果按钮间隔依然不一致，使用 flexbox 使它们居中并保持均等间隔 */
-.button-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-button {
-    margin: 10px;
-    padding: 10px 20px;
-    background-color: #4eb8ea;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-}
-
 
 h2 {
     font-size: 24px;
@@ -51,95 +26,123 @@ h2 {
     color: #333;
 }
 
-form {
-    margin: 15px 0;
-}
-
-input[type="submit"], button {
+/* 一致按钮样式 */
+.button, .dropbtn, input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    font-size: 16px;
     background-color: #007bff;
     color: white;
-    padding: 12px 24px;
     border: none;
-    border-radius: 5px;
-    font-size: 18px;
+    border-radius: 6px;
     cursor: pointer;
+    text-align: center;
+    box-sizing: border-box;
     transition: background-color 0.3s ease;
-    width: 100%;
-    max-width: 100%;  /* 允许按钮适应容器宽度 */
-    margin-top: 10px;
 }
 
-input[type="submit"]:hover, button:hover {
+.button:hover, .dropbtn:hover, input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-input[type="submit"]:focus, button:focus {
-    outline: 2px solid #0056b3;
+form {
+    margin: 0;
 }
 
-input, button {
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="submit"],
+button,
+textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 18px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+/* dropdown 容器本身保持与按钮一致宽度 */
+.dropdown {
+    width: 100%;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+/* dropdown 内容样式 */
+.dropdown-content {
+    display: none;
+    flex-direction: column;
+    background-color: #f1f1f1;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    margin-top: -10px;
+    width: 100%;
+}
+
+.dropdown-content form {
+    margin: 0;
+}
+
+.dropdown-content button {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    background-color: #e6e6e6;
+    color: #333;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    text-align: left;
+}
+
+.dropdown-content button:hover {
+    background-color: #d4d4d4;
+}
+
+/* 控制展开 */
+.dropdown.show .dropdown-content {
+    display: flex;
+}
+
+/* 底部两按钮 */
+.half-button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.half-button-group form {
+    width: 48%;
+}
+
+.half-button-group input {
     width: 100%;
     padding: 10px;
-    margin-top: 10px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    font-size: 16px;
+    font-size: 14px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-p {
-    margin-top: 20px;
-    font-size: 18px;
-    color: #007bff;
+.half-button-group input:hover {
+    background-color: #5a6268;
 }
 
 @media (max-width: 768px) {
-    .container {
-        padding: 20px;
-    }
-
     h2 {
         font-size: 20px;
     }
-
-    input, button {
-        font-size: 16px;
+    .button, .dropbtn, input[type="submit"] {
+        padding: 10px;
+        font-size: 14px;
     }
-
-    p {
-        font-size: 16px;
-    }
-}
-
-.button-group {
-    display: flex;
-    flex-direction: column;  /* 将按钮垂直排列 */
-    gap: 15px;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.button-group form {
-    width: 100%;
-}
-
-.button-group button,
-.button-group input[type="submit"] {
-    width: 100%;  /* 确保按钮宽度填满容器 */
-}
-
-.response-text {
-    margin-top: 20px;
-    text-align: left;
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 6px;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
-    white-space: pre-wrap; /* 保留换行 */
-}
-
-.result-text {
-    font-size: 24px;
-    color: #28a745;
-    font-weight: bold;
-    margin: 20px 0;
 }

@@ -1,52 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
     <title>Main</title>
+    <script>
+        function toggleDropdown() {
+            document.getElementById("predictionDropdown").classList.toggle("show");
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                const dropdowns = document.getElementsByClassName("dropdown");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove("show");
+                }
+            }
+        };
+    </script>
 </head>
 <body>
     <div class="container">
         <h2>Welcome to Main Menu</h2>
-        
-        <!-- Prediction Form Buttons -->
-        <div class="button-group">
-            <form action="/foodexp" method="POST">
-                <input type="submit" value="Prediction - Food Expenditure">
-            </form>
-            <form action="/foodexp1" method="POST">
-                <input type="submit" value="Prediction Food Exp JS1">
-            </form>
-            <form action="/foodexp2" method="POST">
-                <input type="submit" value="Prediction Food Exp JS2">
-            </form>
+
+        <!-- Prediction Dropdown -->
+        <div class="dropdown" id="predictionDropdown">
+            <button class="dropbtn" onclick="toggleDropdown()">Prediction - Food Expenditure</button>
+            <div class="dropdown-content">
+                <form action="/foodexp" method="POST">
+                    <button type="submit">Default Model</button>
+                </form>
+                <form action="/foodexp1" method="POST">
+                    <button type="submit">JS Model 1</button>
+                </form>
+                <form action="/foodexp2" method="POST">
+                    <button type="submit">JS Model 2</button>
+                </form>
+            </div>
         </div>
 
-        <!-- Investor Test Form -->
+        <!-- Other Buttons -->
         <form action="/investor_test" method="POST">
             <input type="submit" value="Investor Test">
         </form>
 
-        <!-- FAQ Form -->
         <form action="/FAQ" method="POST">
             <input type="submit" value="FAQ">
         </form>
 
-        <!-- User Log Forms -->
-        <div class="button-group">
-            <form action="/userLog" method="POST">
-                <input type="submit" value="View User Log">
-            </form>
-            <form action="/deleteLog" method="POST">
-                <input type="submit" value="Delete User Log">
-            </form>
-        </div>
-
-        <!-- Add the Telegram button -->
         <form action="/telegram" method="POST">
             <input type="submit" value="Start Telegram">
         </form>
+
+        <!-- Bottom Log Buttons -->
+        <div class="half-button-group">
+            <form action="/userLog" method="POST">
+                <input type="submit" value="View Logs">
+            </form>
+            <form action="/deleteLog" method="POST">
+                <input type="submit" value="Delete Logs">
+            </form>
+        </div>
     </div>
 </body>
 </html>
