@@ -80,8 +80,12 @@ def FAQ():
 
 @app.route("/FAQ1", methods=["GET", "POST"])
 def FAQ1():
-    r = model.generate_content("Factors for Profit")
-    return(render_template("FAQ1.html", r=r.candidates[0].content.parts[0]))
+    response = model.generate_content("Factors for Profit")
+    raw_text = response.candidates[0].content.parts[0].text
+
+    # 自动换行：遇到两个换行或句号后加 <br><br>
+    formatted_text = raw_text.replace('\n', '<br>')  
+    return render_template("FAQ1.html", r=formatted_text)
 
 @app.route("/FAQinput", methods=['GET', 'POST'])
 def FAQinput():
