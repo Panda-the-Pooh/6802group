@@ -25,6 +25,19 @@ h2 {
     margin-bottom: 20px;
     color: #333;
 }
+.faq-section {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    font-size: 20px;
+    color: #007bff;
+    margin-bottom: 10px;
+}
 
 /* 一致按钮样式 */
 .button, .dropbtn, input[type="submit"] {
@@ -66,6 +79,34 @@ textarea {
     box-sizing: border-box;
     margin-top: 10px;
 }
+
+/* For the "Back to Main" button */
+.back-to-main-button form input[type="submit"] {
+    width: 50%;  /* Half the size of the current button */
+    background-color: #28a745;  /* Green color */
+    color: white;  /* White text color */
+    padding: 10px 0;  /* Adjust padding */
+    font-size: 16px;  /* Adjust font size */
+    border-radius: 6px;
+    border: none;  /* Remove any default border */
+    cursor: pointer;
+    text-align: center;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+    display: block;  /* Make the button a block element */
+    margin: 0 auto;  /* This centers the button horizontally */
+}
+
+/* Remove any border or background from the form itself */
+.back-to-main-button form {
+    margin: 0;  /* Remove default form margin */
+}
+
+/* Hover effect for "Back to Main" button */
+.back-to-main-button form input[type="submit"]:hover {
+    background-color: #218838;  /* Darker green on hover */
+}
+
 
 /* dropdown 容器本身保持与按钮一致宽度 */
 .dropdown {
@@ -137,12 +178,23 @@ textarea {
     background-color: #5a6268;
 }
 
+/* Mobile responsiveness */
 @media (max-width: 768px) {
     h2 {
         font-size: 20px;
     }
+
     .button, .dropbtn, input[type="submit"] {
         padding: 10px;
         font-size: 14px;
+    }
+
+    .half-button-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .half-button-group form {
+        width: 100%;
     }
 }

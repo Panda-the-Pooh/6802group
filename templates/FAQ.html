@@ -8,24 +8,29 @@
 </head>
 <body>
     <div class="container">
-        <h2>FAQ</h2>
+        <h2>Frequently Asked Questions (FAQ)</h2>
 
-        <p>Gemini</p>
-        <div class="button-group">
-            <form action="/FAQ1" method="POST">
-                <input type="submit" value="Factors for Profit">
+        <div class="faq-section">
+            <p class="section-title">Common Questions</p>
+            <div class="button-group">
+                <form action="/FAQ1" method="POST">
+                    <input type="submit" value="Factors for Profit">
+                </form>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <p class="section-title">Not found your question?</p>
+            <p>Enter a keyword or topic, and we will search Wikipedia for you:</p>
+            <form action="/FAQinput" method="POST">
+                <input type="text" name="q" placeholder="Enter your question or keyword">
+                <div class="button-group">
+                    <input type="submit" value="Search Wikipedia">
+                </div>
             </form>
         </div>
 
-        <p>Or input your question - Wikipedia</p>
-        <form action="/FAQinput" method="POST">
-            <input type="text" name="q" placeholder="Enter your question">
-            <div class="button-group">
-                <input type="submit" value="Enter">
-            </div>
-        </form>
-
-        <div class="button-group">
+        <div class="back-to-main-button">
             <form action="/main" method="POST">
                 <input type="submit" value="Back to Main">
             </form>
