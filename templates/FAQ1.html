@@ -18,6 +18,11 @@
             <h3>Reply:</h3>
             <p style="text-align: left; line-height: 1.6;">{{ r|safe }}</p>
         </div>
+        <div class="back-to-main-button">
+            <form action="/main" method="POST">
+                <input type="submit" value="Back to Main">
+            </form>
+        </div>
     </div>
 </body>
 </html>
