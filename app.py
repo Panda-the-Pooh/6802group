@@ -125,5 +125,10 @@ def deleteLog():
     return(render_template("deleteLog.html"))
 
 
+## back to login 
+@app.route('/login')
+def login():
+    return render_template('index.html')
+
 if __name__ == "__main__":
     app.run()
