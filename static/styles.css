@@ -198,3 +198,22 @@ textarea {
         width: 100%;
     }
 }
+
+
+.response-text ul {
+    text-align: left;
+    padding-left: 20px;
+    list-style-type: disc;
+    line-height: 1.6;
+}
+
+.response-text h1, 
+.response-text h2, 
+.response-text h3 {
+    color: #007bff;
+    margin-top: 20px;
+}
+
+.response-text strong {
+    color: #333;
+}

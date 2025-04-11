@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template
+from markdown import markdown
 import sqlite3
 import datetime
 import google.generativeai as genai
@@ -83,9 +84,9 @@ def FAQ1():
     response = model.generate_content("Factors for Profit")
     raw_text = response.candidates[0].content.parts[0].text
 
-    # 自动换行：遇到两个换行或句号后加 <br><br>
-    formatted_text = raw_text.replace('\n', '<br>')  
-    return render_template("FAQ1.html", r=formatted_text)
+    # 用 markdown 转成 HTML
+    formatted_html = markdown(raw_text)
+    return render_template("FAQ1.html", r=formatted_html)
 
 @app.route("/FAQinput", methods=['GET', 'POST'])
 def FAQinput():
