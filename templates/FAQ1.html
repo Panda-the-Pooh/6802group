@@ -10,18 +10,14 @@
     <div class="container">
         <div class="back-to-main-button">
             <form action="/main" method="POST">
-                <input type="submit" value="Main">
+                <input type="submit" value="Back to Main">
             </form>
         </div>
 
-        <div class="response-text">
+        <!-- 回答内容区域，支持滚动 -->
+        <div class="response-text" style="max-height: 400px; overflow-y: auto; text-align: left; line-height: 1.6; padding-right: 10px;">
             <h3>Reply:</h3>
-            <p style="text-align: left; line-height: 1.6;">{{ r|safe }}</p>
-        </div>
-        <div class="back-to-main-button">
-            <form action="/main" method="POST">
-                <input type="submit" value="Back to Main">
-            </form>
+            <p>{{ r | safe }}</p>
         </div>
     </div>
 </body>
