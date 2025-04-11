@@ -7,7 +7,6 @@ import wikipedia
 import time
 import requests
 
-# Flask no need to beautify, Flask-markup is used to beautify
 
 app = Flask(__name__)
 
